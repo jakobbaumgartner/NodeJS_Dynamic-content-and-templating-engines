@@ -1,26 +1,20 @@
-const path = require('path')
+const path = require('path');
 
-const express = require('express')
+const express = require('express');
 
-const router = express.Router()
+const rootDir = require('../util/path');
 
-// Express nam omogoča, da routanje izvedemo s pomočjo route elementa, ki se obnaša podobno kot app
-// element le, da nam omogoča lažje exportanje v app.js datoteko. 
+const router = express.Router();
 
+// /admin/add-product => GET
+router.get('/add-product', (req, res, next) => {
+  res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
+});
 
-router.get('/newadded', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'))
-})
+// /admin/add-product => POST
+router.post('/add-product', (req, res, next) => {
+  console.log(req.body);
+  res.redirect('/');
+});
 
-//get req, ker hoče neko kodo - -informacije
-
-router.post('/product', (req, res, next) => {
-    console.log('productpage')
-    console.log(req.body)
-    res.send('<p>trrt</p>')
-
-})
-
-// post req, ker sprejme informacije
-
-module.exports = router
+module.exports = router;
