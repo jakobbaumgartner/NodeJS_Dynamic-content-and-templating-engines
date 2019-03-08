@@ -10,7 +10,7 @@ const products = []
 
 // /admin/add-product => GET
 router.get('/add-product', (req, res, next) => {
-  res.render('add-product', {title: 'Some text'})
+  res.render('add-product', {title: 'Some text', path: 'product'})
 //z render lahko uporabimo t.i. templating engine; prvi argument pove datoteko katero renderamo, drugi
 //pa je objekt, ki vključuje dynamic content
 });
